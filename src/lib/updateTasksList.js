@@ -16,7 +16,7 @@ export const updateTasksList = (todoList, viewValue, orderByValue, searchValue) 
     }
     
     if (searchValue.trim !== '') {
-        updatedTasksList = updatedTasksList.filter(task => task.task.indexOf(searchValue) !== -1);
+        updatedTasksList = updatedTasksList.filter(task => task.task.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1);
     }
     
     return updatedTasksList;
