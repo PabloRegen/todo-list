@@ -12,7 +12,7 @@ const NewTaskBar = props => {
             	placeholder='I need to...'
             	value={newTask}
             	onChange={onChange} />
-            <button className='addBtn' onClick={onAddNewTask}>ADD</button>
+            <button className='addBtn' type='button' onClick={onAddNewTask}>ADD</button>
         </form>
     );
 };

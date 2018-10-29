@@ -7,13 +7,13 @@ const ClearTasks = props => {
         <div className='flexRow clearBtns'>
             <button 
             	className='clearBtn'
-            	type='submit'
+            	type='button'
             	onClick={onClearCompletedTasks}>
             	Clear completed
             </button>
             <button
             	className='clearBtn'
-            	type='submit'
+            	type='button'
             	onClick={onClearAllTasks}>
             	Clear all
             </button>

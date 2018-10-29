@@ -12,7 +12,7 @@ const Task = props => {
                     checked={done}
                     onChange={() => onTaskDone(id)} />
                 <span className='taskFlexGrow'>{task.task}</span>
-                <button onClick={e => onTaskDelete(e, id)}>x</button>
+                <button type='button' onClick={e => onTaskDelete(e, id)}>x</button>
             </form>
         </li>
     );
