@@ -7,6 +7,8 @@ export const updateTasksList = (todoList, viewValue, orderByValue, searchValue) 
         updatedTasksList = todoList.filter(task => task.done);
     } else if (viewValue === 'starred') {
         updatedTasksList = todoList.filter(task => task.starred);
+    } else if (viewValue === 'notStarred') {
+        updatedTasksList = todoList.filter(task => !task.starred);
     } else {
         updatedTasksList = todoList;
     }
