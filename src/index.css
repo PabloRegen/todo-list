@@ -41,10 +41,15 @@ body {
   margin-bottom: 15px;
   font-size: 0.8em;
 }
+.addBtn:hover {
+  color: black;
+
+}
 .select {
   width: 90px;
   height: 17px;
   border: none;
+  cursor: pointer;
 }
 .search {
   width: 200px;
@@ -81,11 +86,29 @@ li {
   padding: 0 15px;
 }
 button[type='button'] {
-  border: none; 
+  border: none;
+  cursor: pointer;
 }
 .taskCompleted {
   color: rgb(117,123,133);
   text-decoration: line-through;
+}
+.star {
+  visibility: hidden;
+  font-size: 23px;
+  cursor: pointer;
+}
+.star::before {
+  content: '\2606';
+  position: relative;
+  /*display: block;*/
+  top: -6px;
+  left: -15px;
+  visibility:visible;
+}
+.star:checked::before,
+.star:hover::before {
+  content: '\2605';
 }
 
 .clearBtns {
@@ -95,6 +118,7 @@ button[type='button'] {
   color: rgb(170,170,170);
   background: rgb(19,117,109);
   font-size: 1.5em;
+  cursor: pointer;
 }
 .clearBtn:hover {
   color: white;

@@ -1,18 +1,31 @@
 import React from 'react';
 
 const Task = props => {
-    const { task, onTaskDone, onTaskDelete } = props;
-    const { done, id } = task;
+    const { task, onTaskDone, onTaskStarred, onTaskDelete } = props;
+    const { done, starred, id } = task;
+    const classTaskCompleted = done ? 'taskCompleted' : 'taskNotCompleted';
 
     return (
-        <li className={done ? 'taskCompleted' : 'taskNotCompleted'}>
+        <li>
             <form className='flexRow'>
-                <input
+                <input 
                     type='checkbox'
                     checked={done}
                     onChange={() => onTaskDone(id)} />
-                <span className='taskFlexGrow'>{task.task}</span>
-                <button type='button' onClick={e => onTaskDelete(e, id)}>x</button>
+                <span
+                    className={`taskFlexGrow ${classTaskCompleted}`}>
+                    {task.task}
+                </span>
+                <input
+                    className='star'
+                    type='checkbox'
+                    checked={starred}
+                    onChange={() => onTaskStarred(id)} />
+                <button
+                    type='button'
+                    onClick={e => onTaskDelete(e, id)}>
+                    x
+                </button>
             </form>
         </li>
     );

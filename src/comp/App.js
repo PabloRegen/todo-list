@@ -55,7 +55,7 @@ class App extends Component {
             postedOn: Date.now(),
             done: false,
             // dueOn: null,
-            // isStarred: false,
+            starred: false,
             // color: null,
             // notes: null,
         };
@@ -72,6 +72,19 @@ class App extends Component {
                 if (task.id === taskId) {
                     return { ...task, done: !task.done };
                     // or return Object.assign({}, task, { done: !task.done });
+                } else {
+                    return task;
+                }
+            })
+        }));
+    }
+
+    handleTaskStarred = taskId => {
+        this.setState(state => ({
+            todoList: state.todoList.map(task => {
+                if (task.id === taskId) {
+                    return { ...task, starred: !task.starred };
+                    // or return Object.assign({}, task, { starred: !task.starred });
                 } else {
                     return task;
                 }
@@ -138,10 +151,11 @@ class App extends Component {
                         onChange={this.handleChange} />
                 </div>
                 <TotalTasksToDo
-                    totalTasksToDo={amountTasksToDo(todoList)}/>
+                    totalTasksToDo={amountTasksToDo(todoList)} />
                 <TasksList
                     userPreferenceToDoList={updateTasksList(todoList, viewValue, orderByValue, searchValue)}
                     onTaskDone={this.handleTaskDone}
+                    onTaskStarred={this.handleTaskStarred}
                     onTaskDelete={this.handleTaskDelete} />
                 <ClearTasks 
                     onClearCompletedTasks={this.handleClearCompletedTasks}

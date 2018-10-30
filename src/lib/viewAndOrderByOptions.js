@@ -1,7 +1,8 @@
 const viewOptions = [
     { value: 'all', label: 'All tasks' },
     { value: 'current', label: 'Active' },
-    { value: 'completed', label: 'Completed' }
+    { value: 'completed', label: 'Completed' },
+    { value: 'starred', label: 'Starred' }
 ];
 
 const orderByOptions = [
