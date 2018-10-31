@@ -29,6 +29,7 @@ class App extends Component {
     state = {
         todoList: [],
         newTask: '',
+        dueOn: '',
         searchValue: '',
         viewValue: 'all',
         orderByValue: 'newestFirst'
@@ -43,7 +44,7 @@ class App extends Component {
 
     handleAddNewTask = e => {
         e.preventDefault();
-        const newTask = this.state.newTask;
+        const { newTask, dueOn } = this.state;
         
         if (newTask.trim() === '') {
             return;
@@ -54,14 +55,15 @@ class App extends Component {
             task: newTask.trim(),
             postedOn: Date.now(),
             done: false,
-            // dueOn: null,
+            dueOn: dueOn,
             starred: false,
             // color: null,
             // notes: null,
         };
         
         this.setState(state => ({
-            newTask: '', 
+            newTask: '',
+            dueOn: '',
             todoList: state.todoList.concat([newItem]),
         }));
     }
@@ -132,7 +134,7 @@ class App extends Component {
     // }
 
     render() {
-        const { todoList, newTask, searchValue, viewValue, orderByValue } = this.state;
+        const { todoList, newTask, dueOn, searchValue, viewValue, orderByValue } = this.state;
 
         return (
             <div>
@@ -140,6 +142,7 @@ class App extends Component {
                     <Title />
                     <NewTaskBar
                         newTask={newTask}
+                        dueOn={dueOn}
                         onChange={this.handleChange}
                         onAddNewTask={this.handleAddNewTask} />
                     <UserDisplayPreference

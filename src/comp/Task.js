@@ -1,9 +1,12 @@
 import React from 'react';
+import moment from 'moment';
 
 const Task = props => {
     const { task, onTaskDone, onTaskStarred, onTaskDelete } = props;
-    const { done, starred, id } = task;
-    const classTaskCompleted = done ? 'taskCompleted' : 'taskNotCompleted';
+    const { done, dueOn, starred, id } = task;
+    const classTaskCompleted = (done ? 'taskCompleted' : '');
+    const dueOnText = (dueOn === '' ? '' : moment(dueOn, 'YYYY-MM-DD').calendar().split(' at')[0]);
+    const classDueToday = (dueOnText === 'Today' ? 'dueToday' : '');
 
     return (
         <li>
@@ -15,6 +18,10 @@ const Task = props => {
                 <span
                     className={`taskFlexGrow ${classTaskCompleted}`}>
                     {task.task}
+                </span>
+                <span
+                    className={`${classTaskCompleted} ${classDueToday}`}>
+                    {dueOnText}
                 </span>
                 <input
                     className='star'
