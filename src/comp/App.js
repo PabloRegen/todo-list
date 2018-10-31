@@ -52,7 +52,7 @@ class App extends Component {
         
         const newItem = {
             id: Date.now(),
-            task: newTask.trim(),
+            text: newTask.trim(),
             postedOn: Date.now(),
             done: false,
             dueOn: dueOn,
@@ -160,7 +160,7 @@ class App extends Component {
                     onTaskDone={this.handleTaskDone}
                     onTaskStarred={this.handleTaskStarred}
                     onTaskDelete={this.handleTaskDelete} />
-                <ClearTasks 
+                <ClearTasks
                     onClearCompletedTasks={this.handleClearCompletedTasks}
                     onClearAllTasks={this.handleClearAllTasks} />
             </div>

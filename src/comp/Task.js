@@ -3,7 +3,7 @@ import moment from 'moment';
 
 const Task = props => {
     const { task, onTaskDone, onTaskStarred, onTaskDelete } = props;
-    const { done, dueOn, starred, id } = task;
+    const { text, done, dueOn, starred, id } = task;
     const classTaskCompleted = (done ? 'taskCompleted' : '');
     const dueOnText = (dueOn === '' ? '' : moment(dueOn, 'YYYY-MM-DD').calendar().split(' at')[0]);
     const classDueToday = (dueOnText === 'Today' ? 'dueToday' : '');
@@ -17,7 +17,7 @@ const Task = props => {
                     onChange={() => onTaskDone(id)} />
                 <span
                     className={`taskFlexGrow ${classTaskCompleted}`}>
-                    {task.task}
+                    {text}
                 </span>
                 <span
                     className={`${classTaskCompleted} ${classDueToday}`}>
