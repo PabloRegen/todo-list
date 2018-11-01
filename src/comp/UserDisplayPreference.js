@@ -3,9 +3,7 @@ import ViewBar from './ViewBar';
 import OrderByBar from './OrderByBar';
 import SearchBar from './SearchBar';
 
-const UserDisplayPreference = props => {
-    const { viewOptions, orderByOptions, viewValue, orderByValue, searchValue, onChange } = props;
-
+const UserDisplayPreference = ({ viewOptions, orderByOptions, viewValue, orderByValue, searchValue, onChange }) => {
     return (
         <div className='flexRow'>
             <ViewBar

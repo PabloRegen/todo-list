@@ -1,8 +1,6 @@
 import React from 'react';
 
-const ClearTasks = props => {
-    const { onClearCompletedTasks, onClearAllTasks } = props;
-
+const ClearTasks = ({ onClearCompletedTasks, onClearAllTasks }) => {
     return (
         <div className='flexRow clearBtns'>
             <button 

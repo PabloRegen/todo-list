@@ -1,8 +1,6 @@
 import React from 'react';
 
-const NewTaskBar = props => {
-    const {newTask, dueOn, onChange, onAddNewTask } = props;
-
+const NewTaskBar = ({ newTask, dueOn, onChange, onAddNewTask }) => {
     return (
         <form className='flexRow'>
             <input 

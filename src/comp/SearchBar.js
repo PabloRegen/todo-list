@@ -1,8 +1,6 @@
 import React from 'react';
 
-const SearchBar = props => {
-	const { searchValue, onChange } = props;
-
+const SearchBar = ({ searchValue, onChange }) => {
 	return (
 	    <input
 	        className='search'

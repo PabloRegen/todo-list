@@ -1,8 +1,6 @@
 import React from 'react';
 
-const ViewBar = props => {
-	const { viewOptions, viewValue, onChange } = props;
-
+const ViewBar = ({ viewOptions, viewValue, onChange }) => {
 	return (
 	    <select
 	        className='select'

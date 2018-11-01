@@ -1,8 +1,6 @@
 import React from 'react';
 
-const OrderByBar = props => {
-	const { orderByValue, orderByOptions, onChange } = props;
-	
+const OrderByBar = ({ orderByValue, orderByOptions, onChange }) => {	
 	return (
 	    <select
 	        className='select'

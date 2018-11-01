@@ -37,6 +37,7 @@ class App extends Component {
     
     handleChange = e => {
         const { name, value } = e.target;
+
         this.setState({
             [name]: value
         });
@@ -57,6 +58,7 @@ class App extends Component {
             done: false,
             dueOn: dueOn,
             starred: false,
+            isWritable: false,
             // color: null,
             // notes: null,
         };
@@ -81,12 +83,50 @@ class App extends Component {
         }));
     }
 
+    handleTaskClicked = taskId => {
+        this.setState(state => ({
+            todoList: state.todoList.map(task => {
+                if (task.id === taskId) {
+                    return { ...task, isWritable: true };
+                } else {
+                    return task;
+                }
+            })
+        }));
+    }
+
+    handleTaskEdit = (e, taskId) => {
+        let { value } = e.target;
+
+        this.setState(state => ({
+            todoList: state.todoList.map(task => {
+                if (task.id === taskId) {
+                    return { ...task, text: value };
+                } else {
+                    return task;
+                }
+            })
+        }));
+    }
+
+    handleSaveEditedTask = (e, taskId) => {
+        e.preventDefault();
+        this.setState(state => ({
+            todoList: state.todoList.map(task => {
+                if (task.id === taskId) {
+                    return { ...task, isWritable: false };
+                } else {
+                    return task;
+                }
+            })
+        }));
+    }
+
     handleTaskStarred = taskId => {
         this.setState(state => ({
             todoList: state.todoList.map(task => {
                 if (task.id === taskId) {
                     return { ...task, starred: !task.starred };
-                    // or return Object.assign({}, task, { starred: !task.starred });
                 } else {
                     return task;
                 }
@@ -158,6 +198,9 @@ class App extends Component {
                 <TasksList
                     userPreferenceToDoList={updateTasksList(todoList, viewValue, orderByValue, searchValue)}
                     onTaskDone={this.handleTaskDone}
+                    onTaskClicked={this.handleTaskClicked}
+                    onTaskEdit={this.handleTaskEdit}
+                    onSaveEditedTask={this.handleSaveEditedTask}
                     onTaskStarred={this.handleTaskStarred}
                     onTaskDelete={this.handleTaskDelete} />
                 <ClearTasks
