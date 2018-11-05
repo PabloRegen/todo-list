@@ -96,7 +96,7 @@ class App extends Component {
     }
 
     handleTaskEdit = (e, taskId) => {
-        let { value } = e.target;
+        const { value } = e.target;
 
         this.setState(state => ({
             todoList: state.todoList.map(task => {
