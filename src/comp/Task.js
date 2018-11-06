@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import EditText from './EditText';
 
-const Task = ({ task, onTaskDone, onTaskClicked, onTaskEdit, onSaveEditedTask, onTaskStarred, onTaskDelete }) => {
+const Task = ({ task, onTaskDone, onTaskClicked, onTaskEdit, onKeyDown, onSaveEditedTask, onTaskStarred, onTaskDelete }) => {
     const { text, done, dueOn, starred, id, isWritable } = task;
     const classTaskCompleted = (done ? 'taskCompleted' : '');
     const dueOnText = (dueOn === '' ? '' : moment(dueOn, 'YYYY-MM-DD').calendar().split(' at')[0]);
@@ -22,8 +22,9 @@ const Task = ({ task, onTaskDone, onTaskClicked, onTaskEdit, onSaveEditedTask, o
                             text={text}
                             id={id}
                             onTaskEdit={onTaskEdit}
+                            onKeyDown={onKeyDown}
                             onSaveEditedTask={onSaveEditedTask} />
-                        : <span onClick={() => onTaskClicked(id)}>{text}</span>
+                        : <span onClick={() => onTaskClicked(id)}>{text.trim()}</span>
                     }
                 </span>
                 <span

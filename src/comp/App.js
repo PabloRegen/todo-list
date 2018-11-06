@@ -109,6 +109,12 @@ class App extends Component {
         }));
     }
 
+    handleKeyDown = (e, taskId) => {
+        if (e.key === 'Enter') {
+            this.handleSaveEditedTask(e, taskId);
+        }
+    }
+
     handleSaveEditedTask = (e, taskId) => {
         e.preventDefault();
         this.setState(state => ({
@@ -200,6 +206,7 @@ class App extends Component {
                     onTaskDone={this.handleTaskDone}
                     onTaskClicked={this.handleTaskClicked}
                     onTaskEdit={this.handleTaskEdit}
+                    onKeyDown={this.handleKeyDown}
                     onSaveEditedTask={this.handleSaveEditedTask}
                     onTaskStarred={this.handleTaskStarred}
                     onTaskDelete={this.handleTaskDelete} />
