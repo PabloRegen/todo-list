@@ -69,39 +69,20 @@ class App extends Component {
             todoList: state.todoList.concat([newItem]),
         }));
     }
-    
-    handleTaskDone = taskId => {
-        this.setState(state => ({
-            todoList: state.todoList.map(task => {
-                if (task.id === taskId) {
-                    return { ...task, done: !task.done };
-                    // or return Object.assign({}, task, { done: !task.done });
-                } else {
-                    return task;
-                }
-            })
-        }));
-    }
 
-    handleTaskClicked = taskId => {
-        this.setState(state => ({
-            todoList: state.todoList.map(task => {
-                if (task.id === taskId) {
-                    return { ...task, isWritable: true };
-                } else {
-                    return task;
-                }
-            })
-        }));
-    }
-
-    handleTaskEdit = (e, taskId) => {
+    handleTaskAction = (e, taskId, action) => {
         const { value } = e.target;
 
         this.setState(state => ({
             todoList: state.todoList.map(task => {
                 if (task.id === taskId) {
-                    return { ...task, text: value };
+                    /* if (action === 'done') return Object.assign({}, task, { done: !task.done }) or syntax below */
+                    if (action === 'done') return { ...task, done: !task.done };
+                    if (action === 'star') return { ...task, starred: !task.starred };
+                    if (action === 'click') return { ...task, isWritable: true };
+                    if (action === 'save') return { ...task, isWritable: false };
+                    if (action === 'edit') return { ...task, text: value };
+                    return task;
                 } else {
                     return task;
                 }
@@ -111,45 +92,20 @@ class App extends Component {
 
     handleKeyDown = (e, taskId) => {
         if (e.key === 'Enter') {
-            this.handleSaveEditedTask(e, taskId);
+            this.handleTaskAction(e, taskId, 'save');
         }
-    }
-
-    handleSaveEditedTask = (e, taskId) => {
-        e.preventDefault();
-        this.setState(state => ({
-            todoList: state.todoList.map(task => {
-                if (task.id === taskId) {
-                    return { ...task, isWritable: false };
-                } else {
-                    return task;
-                }
-            })
-        }));
-    }
-
-    handleTaskStarred = taskId => {
-        this.setState(state => ({
-            todoList: state.todoList.map(task => {
-                if (task.id === taskId) {
-                    return { ...task, starred: !task.starred };
-                } else {
-                    return task;
-                }
-            })
-        }));
+        // } else if (e.key === 'Escape') {
     }
     
-    handleTaskDelete = (e, taskId) => {
-        e.preventDefault();     
+    handleTaskDelete = taskId => {
         this.setState(state => ({
             todoList: state.todoList.filter(task => task.id !== taskId)
         }));
     }
     
-    handleClearCompletedTasks = () => {         
+    handleClearCompletedTasks = () => {
         this.setState(state => ({ 
-            todoList: state.todoList.filter(task => task.done === false)
+            todoList: state.todoList.filter(task => !task.done)
         }));
     }
 
@@ -203,12 +159,8 @@ class App extends Component {
                     totalTasksToDo={amountTasksToDo(todoList)} />
                 <TasksList
                     userPreferenceToDoList={updateTasksList(todoList, viewValue, orderByValue, searchValue)}
-                    onTaskDone={this.handleTaskDone}
-                    onTaskClicked={this.handleTaskClicked}
-                    onTaskEdit={this.handleTaskEdit}
+                    onTaskAction={this.handleTaskAction}
                     onKeyDown={this.handleKeyDown}
-                    onSaveEditedTask={this.handleSaveEditedTask}
-                    onTaskStarred={this.handleTaskStarred}
                     onTaskDelete={this.handleTaskDelete} />
                 <ClearTasks
                     onClearCompletedTasks={this.handleClearCompletedTasks}

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const EditText = ({ text, id, onTaskEdit, onKeyDown, onSaveEditedTask }) => (
+const EditText = ({ text, id, onTaskAction, onKeyDown }) => (
     <input
         className='editText'
         type='text'
         value={text}
-        onChange={e => onTaskEdit(e, id)}
+        onChange={e => onTaskAction(e, id, 'edit')}
+        onBlur={e => onTaskAction(e, id, 'save')}
         onKeyDown={e => onKeyDown(e, id)}
-        onBlur={e => onSaveEditedTask(e, id)} 
         autoFocus />
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import EditText from './EditText';
 
-const Task = ({ task, onTaskDone, onTaskClicked, onTaskEdit, onKeyDown, onSaveEditedTask, onTaskStarred, onTaskDelete }) => {
+const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
     const { text, done, dueOn, starred, id, isWritable } = task;
     const classTaskCompleted = (done ? 'taskCompleted' : '');
     const dueOnText = (dueOn === '' ? '' : moment(dueOn, 'YYYY-MM-DD').calendar().split(' at')[0]);
@@ -14,17 +14,16 @@ const Task = ({ task, onTaskDone, onTaskClicked, onTaskEdit, onKeyDown, onSaveEd
                 <input 
                     type='checkbox'
                     checked={done}
-                    onChange={() => onTaskDone(id)} />
+                    onChange={e => onTaskAction(e, id, 'done')} />
                 <span
                     className={`taskFlexGrow ${classTaskCompleted}`}>
                     {isWritable
                         ? <EditText
                             text={text}
                             id={id}
-                            onTaskEdit={onTaskEdit}
-                            onKeyDown={onKeyDown}
-                            onSaveEditedTask={onSaveEditedTask} />
-                        : <span onClick={() => onTaskClicked(id)}>{text.trim()}</span>
+                            onTaskAction={onTaskAction}
+                            onKeyDown={onKeyDown} />
+                        : <span onClick={e => onTaskAction(e, id, 'click')}>{text.trim()}</span>
                     }
                 </span>
                 <span
@@ -35,10 +34,10 @@ const Task = ({ task, onTaskDone, onTaskClicked, onTaskEdit, onKeyDown, onSaveEd
                     className='star'
                     type='checkbox'
                     checked={starred}
-                    onChange={() => onTaskStarred(id)} />
+                    onChange={e => onTaskAction(e, id, 'star')} />
                 <button
                     type='button'
-                    onClick={e => onTaskDelete(e, id)}>
+                    onClick={() => onTaskDelete(id)}>
                     x
                 </button>
             </form>
