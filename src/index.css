@@ -32,6 +32,7 @@ button[type='button'] {
   height: 30px;
   border: none;
   margin-bottom: 15px;
+  font-family: arial, helvetica, sans-serif;
   font-size: 0.8em;
   text-indent: 5px;
 }
@@ -92,14 +93,20 @@ li {
   color: rgb(117,123,133);
   text-decoration: line-through;
 }
-.editText {
+.editText,
+.editDate {
   box-sizing: border-box;
   width: 100%;
   border: none;
   font-family: arial, helvetica, sans-serif;
-  font-size: 16px;
   text-indent: 5px;
   outline: none; /* removes focus border: */
+}
+.editText {
+  font-size: 16px;
+}
+.editDate {
+  font-size: 13px;
 }
 .dueToday {
   color: white;

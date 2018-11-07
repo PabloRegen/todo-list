@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import EditText from './EditText';
+import EditDate from './EditDate';
 
 const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
-    const { text, done, dueOn, starred, id, isWritable } = task;
+    const { text, done, dueOn, starred, id, editingText, editingDate } = task;
     const classTaskCompleted = (done ? 'taskCompleted' : '');
     const dueOnText = (dueOn === '' ? '' : moment(dueOn, 'YYYY-MM-DD').calendar().split(' at')[0]);
     const classDueToday = (dueOnText === 'Today' ? 'dueToday' : '');
@@ -17,7 +18,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                     onChange={e => onTaskAction(e, id, 'done')} />
                 <span
                     className={`taskFlexGrow ${classTaskCompleted}`}>
-                    {isWritable
+                    {editingText
                         ? <EditText
                             text={text}
                             id={id}
@@ -28,7 +29,14 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                 </span>
                 <span
                     className={`${classTaskCompleted} ${classDueToday}`}>
-                    {dueOnText}
+                    {editingDate
+                        ? <EditDate
+                            dueOn={dueOn}
+                            id={id}
+                            onTaskAction={onTaskAction}
+                            onKeyDown={onKeyDown} />
+                        : <span onClick={e => onTaskAction(e, id, 'clickDate')}>{dueOnText}</span>
+                    }
                 </span>
                 <input
                     className='star'

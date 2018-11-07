@@ -58,7 +58,8 @@ class App extends Component {
             done: false,
             dueOn: dueOn,
             starred: false,
-            isWritable: false,
+            editingText: false,
+            editingDate: false,
             // color: null,
             // notes: null,
         };
@@ -79,9 +80,12 @@ class App extends Component {
                     /* if (action === 'done') return Object.assign({}, task, { done: !task.done }) or syntax below */
                     if (action === 'done') return { ...task, done: !task.done };
                     if (action === 'star') return { ...task, starred: !task.starred };
-                    if (action === 'click') return { ...task, isWritable: true };
-                    if (action === 'save') return { ...task, isWritable: false };
+                    if (action === 'click') return { ...task, editingText: true };
+                    if (action === 'save') return { ...task, editingText: false };
                     if (action === 'edit') return { ...task, text: value };
+                    if (action === 'clickDate') return { ...task, editingDate: true };
+                    if (action === 'saveDate') return { ...task, editingDate: false };
+                    if (action === 'editDate') return { ...task, dueOn: value };
                     return task;
                 } else {
                     return task;
@@ -90,9 +94,13 @@ class App extends Component {
         }));
     }
 
-    handleKeyDown = (e, taskId) => {
+    handleKeyDown = (e, taskId, keyDownEditFor) => {
         if (e.key === 'Enter') {
-            this.handleTaskAction(e, taskId, 'save');
+            if (keyDownEditFor === 'keyDownEditText') {
+                this.handleTaskAction(e, taskId, 'save');
+            } else {
+                this.handleTaskAction(e, taskId, 'saveDate');
+            }
         }
         // } else if (e.key === 'Escape') {
     }

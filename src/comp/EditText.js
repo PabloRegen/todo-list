@@ -7,7 +7,7 @@ const EditText = ({ text, id, onTaskAction, onKeyDown }) => (
         value={text}
         onChange={e => onTaskAction(e, id, 'edit')}
         onBlur={e => onTaskAction(e, id, 'save')}
-        onKeyDown={e => onKeyDown(e, id)}
+        onKeyDown={e => onKeyDown(e, id, 'keyDownEditText')}
         autoFocus />
 );
 
