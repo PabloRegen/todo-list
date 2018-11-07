@@ -43,11 +43,21 @@ class App extends Component {
         });
     }
 
+    handleKeyDown = (e, taskId, keyDownFor) => {
+        if (e.key === 'Enter') {
+            if (keyDownFor === 'keyDownToAddNewTask') this.handleAddNewTask(e);
+            if (keyDownFor === 'keyDownToEditText') this.handleTaskAction(e, taskId, 'save');
+            if (keyDownFor === 'keyDownToEditDate') this.handleTaskAction(e, taskId, 'saveDate');
+        }
+        // } else if (e.key === 'Escape') {
+    }
+
     handleAddNewTask = e => {
         e.preventDefault();
         const { newTask, dueOn } = this.state;
         
         if (newTask.trim() === '') {
+            alert('▶ Please write a task');
             return;
         }
         
@@ -77,7 +87,7 @@ class App extends Component {
         this.setState(state => ({
             todoList: state.todoList.map(task => {
                 if (task.id === taskId) {
-                    /* if (action === 'done') return Object.assign({}, task, { done: !task.done }) or syntax below */
+                    /* Use `if (action === 'done') return Object.assign({}, task, { done: !task.done })` or syntax below */
                     if (action === 'done') return { ...task, done: !task.done };
                     if (action === 'star') return { ...task, starred: !task.starred };
                     if (action === 'click') return { ...task, editingText: true };
@@ -94,17 +104,6 @@ class App extends Component {
         }));
     }
 
-    handleKeyDown = (e, taskId, keyDownEditFor) => {
-        if (e.key === 'Enter') {
-            if (keyDownEditFor === 'keyDownEditText') {
-                this.handleTaskAction(e, taskId, 'save');
-            } else {
-                this.handleTaskAction(e, taskId, 'saveDate');
-            }
-        }
-        // } else if (e.key === 'Escape') {
-    }
-    
     handleTaskDelete = taskId => {
         this.setState(state => ({
             todoList: state.todoList.filter(task => task.id !== taskId)
@@ -154,7 +153,7 @@ class App extends Component {
                         newTask={newTask}
                         dueOn={dueOn}
                         onChange={this.handleChange}
-                        onAddNewTask={this.handleAddNewTask} />
+                        onKeyDown={this.handleKeyDown} />
                     <UserDisplayPreference
                         viewOptions={viewOptions}
                         orderByOptions={orderByOptions}

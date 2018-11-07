@@ -1,9 +1,11 @@
 import React from 'react';
 
-const NewTaskBar = ({ newTask, dueOn, onChange, onAddNewTask }) => {
+const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown }) => {
     return (
-        <form className='flexRow'>
-            <input 
+        <form
+            className='flexRow'
+            onKeyDown={e => onKeyDown(e, undefined, 'keyDownToAddNewTask')}>
+            <input
             	className='newTask taskFlexGrow'
             	name='newTask'
             	type='text'
@@ -14,10 +16,8 @@ const NewTaskBar = ({ newTask, dueOn, onChange, onAddNewTask }) => {
                 className='dueOn'
                 name='dueOn'
                 type='date'
-                // placeholder='due...'
                 value={dueOn}
                 onChange={onChange} />
-            <button className='addBtn' type='button' onClick={onAddNewTask}>ADD</button>
         </form>
     );
 };
