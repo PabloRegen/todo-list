@@ -93,6 +93,12 @@ li {
   color: rgb(117,123,133);
   text-decoration: line-through;
 }
+.content {
+  cursor: pointer;
+}
+.content:hover {
+  color: white;
+}
 .editText,
 .editDate {
   box-sizing: border-box;

@@ -24,7 +24,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                             id={id}
                             onTaskAction={onTaskAction}
                             onKeyDown={onKeyDown} />
-                        : <span onClick={e => onTaskAction(e, id, 'click')}>{text.trim()}</span>
+                        : <div className='content' onClick={e => onTaskAction(e, id, 'click')}>{text.trim() || '-'}</div>
                     }
                 </span>
                 <span
@@ -35,7 +35,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                             id={id}
                             onTaskAction={onTaskAction}
                             onKeyDown={onKeyDown} />
-                        : <span onClick={e => onTaskAction(e, id, 'clickDate')}>{dueOnText}</span>
+                        : <span className='content' onClick={e => onTaskAction(e, id, 'clickDate')}>{dueOnText || ':'}</span>
                     }
                 </span>
                 <input
