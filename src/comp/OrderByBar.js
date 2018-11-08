@@ -3,7 +3,7 @@ import React from 'react';
 const OrderByBar = ({ orderByValue, orderByOptions, onChange }) => {	
 	return (
 	    <select
-	        className='select'
+	        className='select pointer'
 	        name='orderByValue'
 	        value={orderByValue}
 	        onChange={onChange}

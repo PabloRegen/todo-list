@@ -3,7 +3,7 @@ import React from 'react';
 const ViewBar = ({ viewOptions, viewValue, onChange }) => {
 	return (
 	    <select
-	        className='select'
+	        className='select pointer'
 	        name='viewValue'
 	        value={viewValue}
 	        onChange={onChange}

@@ -2,7 +2,7 @@ import React from 'react';
 
 const EditText = ({ text, id, onTaskAction, onKeyDown }) => (
     <input
-        className='editText'
+        className='editText fontFamily'
         type='text'
         value={text}
         onChange={e => onTaskAction(e, id, 'edit')}

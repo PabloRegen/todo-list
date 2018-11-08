@@ -6,14 +6,14 @@ const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown }) => {
             className='flexRow'
             onKeyDown={e => onKeyDown(e, undefined, 'keyDownToAddNewTask')}>
             <input
-            	className='newTask taskFlexGrow'
+                className='taskFlexGrow newTask fontFamily'
             	name='newTask'
             	type='text'
             	placeholder='I need to...'
             	value={newTask}
             	onChange={onChange} />
-            <input 
-                className='dueOn'
+            <input
+                className='dueOn fontFamily'
                 name='dueOn'
                 type='date'
                 value={dueOn}

@@ -1,12 +1,20 @@
 body {
-  font-family: arial, helvetica, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: rgb(19,117,109);
-  margin: 0
+  margin: 0;
+  padding: 0;
 }
 
 button[type='button'] {
   border: none;
+}
+
+.pointer {
   cursor: pointer;
+}
+
+.fontFamily {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .flexRow {
@@ -32,7 +40,6 @@ button[type='button'] {
   height: 30px;
   border: none;
   margin-bottom: 15px;
-  font-family: arial, helvetica, sans-serif;
   font-size: 0.8em;
   text-indent: 5px;
 }
@@ -40,7 +47,6 @@ button[type='button'] {
   width: 110px;
   height: 17px;
   border: none;
-  cursor: pointer;
 }
 .search {
   width: 200px;
@@ -63,11 +69,11 @@ button[type='button'] {
 }
 
 ul {
+  /*list-style: none;*/
   margin: 0;
   padding: 0;
 }
 li {
-/*  list-style: none; */
   font-size: 1.1em;
   padding: 15px 25px 15px 5px ;
   background: linear-gradient(rgb(0,215,200) 0%, rgb(0,190,180) 100%);
@@ -80,9 +86,6 @@ li {
   color: rgb(117,123,133);
   text-decoration: line-through;
 }
-.content {
-  cursor: pointer;
-}
 .content:hover {
   color: white;
 }
@@ -91,7 +94,6 @@ li {
   box-sizing: border-box;
   width: 100%;
   border: none;
-  font-family: arial, helvetica, sans-serif;
   text-indent: 5px;
   outline: none; /* removes focus border: */
 }
@@ -104,23 +106,39 @@ li {
 .dueToday {
   color: white;
 }
-.star {
+.star,
+.check {
   visibility: hidden;
+}
+.star {
   font-size: 23px;
   margin-left: 30px;
-  cursor: pointer;
+}
+.check {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.star::before,
+.check::before {
+  position: relative;
+  visibility: visible;
 }
 .star::before {
   content: '\2606';
-  position: relative;
-  /*display: block;*/
   top: -6px;
   left: -15px;
-  visibility:visible;
+}
+.check::before {
+  content: '\26aa';
+  top: -6px;
+  left: -2px;
 }
 .star:checked::before,
 .star:hover::before {
   content: '\2605';
+}
+.check:checked::before {
+  content: '\2713';
 }
 
 .clearBtns {
@@ -130,7 +148,6 @@ li {
   color: rgb(170,170,170);
   background: rgb(19,117,109);
   font-size: 1.5em;
-  cursor: pointer;
 }
 .clearBtn:hover {
   color: white;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const EditDate = ({ dueOn, id, onTaskAction, onKeyDown }) => (
     <input
-        className='editDate'
+        className='editDate fontFamily'
         type='date'
         value={dueOn}
         onChange={e => onTaskAction(e, id, 'editDate')}

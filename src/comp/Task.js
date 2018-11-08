@@ -12,7 +12,8 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
     return (
         <li>
             <form className='flexRow'>
-                <input 
+                <input
+                    className='check pointer'
                     type='checkbox'
                     checked={done}
                     onChange={e => onTaskAction(e, id, 'done')} />
@@ -24,7 +25,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                             id={id}
                             onTaskAction={onTaskAction}
                             onKeyDown={onKeyDown} />
-                        : <div className='content' onClick={e => onTaskAction(e, id, 'click')}>{text.trim() || '-'}</div>
+                        : <div className='content pointer' onClick={e => onTaskAction(e, id, 'click')}>{text.trim() || '-'}</div>
                     }
                 </span>
                 <span
@@ -35,15 +36,16 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                             id={id}
                             onTaskAction={onTaskAction}
                             onKeyDown={onKeyDown} />
-                        : <span className='content' onClick={e => onTaskAction(e, id, 'clickDate')}>{dueOnText || ':'}</span>
+                        : <span className='content pointer' onClick={e => onTaskAction(e, id, 'clickDate')}>{dueOnText || ':'}</span>
                     }
                 </span>
                 <input
-                    className='star'
+                    className='star pointer'
                     type='checkbox'
                     checked={starred}
                     onChange={e => onTaskAction(e, id, 'star')} />
                 <button
+                    className='pointer'
                     type='button'
                     onClick={() => onTaskDelete(id)}>
                     x
