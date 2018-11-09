@@ -46,7 +46,7 @@ class App extends Component {
     handleKeyDown = (e, taskId, keyDownFor) => {
         if (e.key === 'Enter') {
             if (keyDownFor === 'keyDownToAddNewTask') this.handleAddNewTask(e);
-            if (keyDownFor === 'keyDownToEditText') this.handleTaskAction(e, taskId, 'save');
+            if (keyDownFor === 'keyDownToEditText') this.handleTaskAction(e, taskId, 'saveText');
             if (keyDownFor === 'keyDownToEditDate') this.handleTaskAction(e, taskId, 'saveDate');
         }
         // } else if (e.key === 'Escape') {
@@ -66,12 +66,14 @@ class App extends Component {
             text: newTask.trim(),
             postedOn: Date.now(),
             done: false,
+            note: '',
             dueOn: dueOn,
             starred: false,
             editingText: false,
             editingDate: false,
+            editingNote: false,
+            noteOpen: false,
             // color: null,
-            // notes: null,
         };
         
         this.setState(state => ({
@@ -91,11 +93,15 @@ class App extends Component {
                     if (action === 'done') return { ...task, done: !task.done };
                     if (action === 'star') return { ...task, starred: !task.starred };
                     if (action === 'click') return { ...task, editingText: true };
-                    if (action === 'save') return { ...task, editingText: false };
-                    if (action === 'edit') return { ...task, text: value };
+                    if (action === 'saveText') return { ...task, editingText: false };
+                    if (action === 'editText') return { ...task, text: value };
                     if (action === 'clickDate') return { ...task, editingDate: true };
                     if (action === 'saveDate') return { ...task, editingDate: false };
                     if (action === 'editDate') return { ...task, dueOn: value };
+                    if (action === 'clickNote') return { ...task, editingNote: true };
+                    if (action === 'saveNote') return { ...task, editingNote: false };
+                    if (action === 'editNote') return { ...task, note: value };
+                    if (action === 'clickCollapsible') return { ...task, noteOpen: !task.noteOpen };
                     return task;
                 } else {
                     return task;
