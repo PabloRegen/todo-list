@@ -24,12 +24,13 @@ const dateChanging = {
 	onKeyDown: 'keyDownToEditDate'
 };
 
-const EditTask = ({ changing, text, note, dueOn, id, onTaskAction, onKeyDown }) => {
+const EditTask = ({ changing, task, onTaskAction, onKeyDown }) => {
+	const { text, note, dueOn, id } = task;
+
 	const whatIsChanging = changing => {
 		if (changing === 'theText') return { ...textChanging, value: text };
 		if (changing === 'theNote') return { ...noteChanging, value: note };
 		if (changing === 'theDate') return { ...dateChanging, value: dueOn};
-		console.log('Oops! @whatIsChanging: something went wrong when trying to edit the task');
 	};
 
 	const change = whatIsChanging(changing);

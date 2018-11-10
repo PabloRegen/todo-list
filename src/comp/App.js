@@ -90,17 +90,21 @@ class App extends Component {
             todoList: state.todoList.map(task => {
                 if (task.id === taskId) {
                     /* Use `if (action === 'done') return Object.assign({}, task, { done: !task.done })` or syntax below */
-                    if (action === 'done') return { ...task, done: !task.done };
-                    if (action === 'star') return { ...task, starred: !task.starred };
-                    if (action === 'click') return { ...task, editingText: true };
+                    if (action === 'taskDone') return { ...task, done: !task.done };
+                    if (action === 'taskStarred') return { ...task, starred: !task.starred };
+
+                    if (action === 'clickText') return { ...task, editingText: true };
                     if (action === 'saveText') return { ...task, editingText: false };
                     if (action === 'editText') return { ...task, text: value };
+
                     if (action === 'clickDate') return { ...task, editingDate: true };
                     if (action === 'saveDate') return { ...task, editingDate: false };
                     if (action === 'editDate') return { ...task, dueOn: value };
+
                     if (action === 'clickNote') return { ...task, editingNote: true };
                     if (action === 'saveNote') return { ...task, editingNote: false };
                     if (action === 'editNote') return { ...task, note: value };
+
                     if (action === 'clickCollapsible') return { ...task, noteOpen: !task.noteOpen };
                     return task;
                 } else {

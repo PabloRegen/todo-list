@@ -1,33 +1,12 @@
 import React from 'react';
 import moment from 'moment';
-import EditTask from './EditTask';
+import DisplayOrEdit from './DisplayOrEdit';
 
 const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
-    const { text, done, note, dueOn, starred, id, editingText, editingDate, editingNote, noteOpen } = task;
+    const { done, dueOn, starred, id, noteOpen } = task;
     const classTaskCompleted = (done ? 'taskCompleted' : '');
     const dueOnText = (dueOn === '' ? '' : moment(dueOn, 'YYYY-MM-DD').calendar().split(' at')[0]);
     const classDueToday = (dueOnText === 'Today' ? 'dueToday' : '');
-
-    const noteOrEditNote = () => {
-        if (editingNote) {
-            return (
-                <EditTask
-                    changing='theNote'
-                    note={note}
-                    id={id}
-                    onTaskAction={onTaskAction}
-                    onKeyDown={onKeyDown} />
-            );
-        } else {
-            return (
-                <span
-                    className='note pointer'
-                    onClick={e => onTaskAction(e, id, 'clickNote')}>
-                    {note || '->'}
-                </span>
-            );
-        }
-    }
 
     return (
         <li>
@@ -37,48 +16,24 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         className='check pointer'
                         type='checkbox'
                         checked={done}
-                        onChange={e => onTaskAction(e, id, 'done')} />
+                        onChange={e => onTaskAction(e, id, 'taskDone')} />
                     <button 
                         className='collapsible'
                         type='button'
                         onClick={e => onTaskAction(e, id, 'clickCollapsible')}/>
                     <span
                         className={`taskFlexGrow ${classTaskCompleted}`}>
-                        {editingText
-                            ? <EditTask
-                                changing='theText'
-                                text={text}
-                                id={id}
-                                onTaskAction={onTaskAction}
-                                onKeyDown={onKeyDown} />
-                            : <span
-                                className='content pointer'
-                                onClick={e => onTaskAction(e, id, 'click')}>
-                                {text.trim() || '-'}
-                            </span>
-                        }
+                        {DisplayOrEdit('theText', task, onTaskAction, onKeyDown)}
                     </span>
                     <span
                         className={`${classTaskCompleted} ${classDueToday}`}>
-                        {editingDate
-                            ? <EditTask
-                                changing='theDate'
-                                dueOn={dueOn}
-                                id={id}
-                                onTaskAction={onTaskAction}
-                                onKeyDown={onKeyDown} />
-                            : <span
-                                className='content pointer'
-                                onClick={e => onTaskAction(e, id, 'clickDate')}>
-                                {dueOnText || ':'}
-                            </span>
-                        }
+                        {DisplayOrEdit('theDate', task, onTaskAction, onKeyDown)}
                     </span>
                     <input
                         className='star pointer'
                         type='checkbox'
                         checked={starred}
-                        onChange={e => onTaskAction(e, id, 'star')} />
+                        onChange={e => onTaskAction(e, id, 'taskStarred')} />
                     <button
                         className='pointer'
                         type='button'
@@ -88,7 +43,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                 </div>
                 <div className={'collapse' + (noteOpen ? 'In' : '')}>
                     <div>
-                        {noteOrEditNote()}
+                        {DisplayOrEdit('theNote', task, onTaskAction, onKeyDown)}
                     </div>
                 </div>
             </form>
@@ -96,4 +51,4 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
     );
 };
 
-export default Task;
+export default Task; 
