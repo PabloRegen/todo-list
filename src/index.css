@@ -146,6 +146,10 @@ li {
 .check:checked::before {
   content: '\2713';
 }
+.deleteButton {
+  background: rgb(240, 240, 240);
+  font-size: 12px;
+}
 
 /* Collapsible button */
 .collapsibleButton {
@@ -183,7 +187,7 @@ li {
 }
 .clearBtn {
   color: rgb(170,170,170);
-  background: rgb(19,117,109);
+  background: transparent;
   font-size: 1.5em;
 }
 .clearBtn:hover {

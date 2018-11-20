@@ -35,7 +35,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         checked={starred}
                         onChange={e => onTaskAction(e, id, 'taskStarred')} />
                     <button
-                        className='pointer'
+                        className='deleteButton pointer'
                         type='button'
                         onClick={() => onTaskDelete(id)}>
                         x
