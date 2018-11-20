@@ -18,9 +18,9 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         checked={done}
                         onChange={e => onTaskAction(e, id, 'taskDone')} />
                     <button 
-                        className='collapsible'
+                        className={`collapsibleButton ${noteOpen ? 'showing' : 'hiding'}`}
                         type='button'
-                        onClick={e => onTaskAction(e, id, 'clickCollapsible')}/>
+                        onClick={e => onTaskAction(e, id, 'clickCollapsible')} />
                     <span
                         className={`taskFlexGrow ${classTaskCompleted}`}>
                         {DisplayOrEdit('theText', task, onTaskAction, onKeyDown)}
@@ -41,10 +41,8 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         x
                     </button>
                 </div>
-                <div className={'collapse' + (noteOpen ? 'In' : '')}>
-                    <div>
-                        {DisplayOrEdit('theNote', task, onTaskAction, onKeyDown)}
-                    </div>
+                <div className={`noteSection ${noteOpen ? '' : 'hiding'}`}>
+                    {DisplayOrEdit('theNote', task, onTaskAction, onKeyDown)}
                 </div>
             </form>
         </li>

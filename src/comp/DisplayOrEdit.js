@@ -3,17 +3,17 @@ import moment from 'moment';
 import EditTask from './EditTask';
 
 const textCalling = {
-    className: 'content',
+    className: 'textContent',
     onClick: 'clickText'
 };
 
 const noteCalling = {
-    className: 'note',
+    className: 'noteContent',
     onClick: 'clickNote'
 };
 
 const dateCalling = {
-    className: 'content',
+    className: 'dateContent',
     onClick: 'clickDate'
 };
 
