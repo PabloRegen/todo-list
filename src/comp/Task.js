@@ -22,7 +22,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         type='button'
                         onClick={e => onTaskAction(e, id, 'clickCollapsible')} />
                     <span
-                        className={`taskFlexGrow ${classTaskCompleted}`}>
+                        className={`textFlex ${classTaskCompleted}`}>
                         {DisplayOrEdit('theText', task, onTaskAction, onKeyDown)}
                     </span>
                     <span
