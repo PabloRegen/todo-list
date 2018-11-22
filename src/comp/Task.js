@@ -41,7 +41,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         x
                     </button>
                 </div>
-                <div className={`noteSection ${noteOpen ? '' : 'hiding'}`}>
+                <div className={`noteSection ${classTaskCompleted} ${noteOpen ? '' : 'hiding'}`}>
                     {DisplayOrEdit('theNote', task, onTaskAction, onKeyDown)}
                 </div>
             </form>

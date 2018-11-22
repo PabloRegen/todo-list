@@ -86,10 +86,6 @@ li {
   flex: 1 5000 auto;
   margin: 0 100px 0 15px;
 }
-.taskCompleted {
-  color: rgb(117,123,133);
-  text-decoration: line-through;
-}
 .textContent:hover,
 .noteContent:hover,
 .dateContent:hover {
@@ -100,15 +96,13 @@ li {
 .editDate {
   box-sizing: border-box;
   width: 100%;
+  padding: 0;
   border: none;
-  text-indent: 5px;
-  outline: none; /* removes focus border: */
+  outline: none; /* remove border focus */
 }
-.editText {
-  font-size: 16px;
-}
+.editText,
 .editNote {
-  font-size: 15px;
+  font-size: 1em;
 }
 .editDate {
   font-size: 11px;
@@ -183,6 +177,11 @@ li {
 }
 .noteSection.hiding {
   max-height:0;
+}
+
+.taskCompleted {
+  color: rgb(117,123,133);
+  text-decoration: line-through;
 }
 
 /* Clear Completed & Clear All buttons */

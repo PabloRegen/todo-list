@@ -4,17 +4,20 @@ import EditTask from './EditTask';
 
 const textCalling = {
     className: 'textContent',
-    onClick: 'clickText'
+    onClick: 'clickText',
+    placeholder: 'Task'
 };
 
 const noteCalling = {
     className: 'noteContent',
-    onClick: 'clickNote'
+    onClick: 'clickNote',
+    placeholder: 'Add Note'
 };
 
 const dateCalling = {
     className: 'dateContent',
-    onClick: 'clickDate'
+    onClick: 'clickDate',
+    placeholder: 'Due On'
 };
 
 const DisplayOrEdit = (calling, task, onTaskAction, onKeyDown) => {
@@ -42,7 +45,7 @@ const DisplayOrEdit = (calling, task, onTaskAction, onKeyDown) => {
             <span
                 className={`${displayEdit.className} pointer`}
                 onClick={e => onTaskAction(e, id, displayEdit.onClick)}>
-                {displayEdit.content || ':'}
+                {displayEdit.content || displayEdit.placeholder}
             </span>
         );
     }
