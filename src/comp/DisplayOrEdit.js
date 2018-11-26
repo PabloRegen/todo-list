@@ -5,19 +5,19 @@ import EditTask from './EditTask';
 const textCalling = {
     className: 'textContent',
     onClick: 'clickText',
-    placeholder: 'Task'
+    placeholder: 'Task...'
 };
 
 const noteCalling = {
     className: 'noteContent',
     onClick: 'clickNote',
-    placeholder: 'Add Note'
+    placeholder: 'Add Note...'
 };
 
 const dateCalling = {
     className: 'dateContent',
     onClick: 'clickDate',
-    placeholder: 'Due On'
+    placeholder: 'Due On...'
 };
 
 const DisplayOrEdit = (calling, task, onTaskAction, onKeyDown) => {

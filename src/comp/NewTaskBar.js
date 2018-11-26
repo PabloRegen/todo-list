@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown }) => {
+const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown, onAddNewTask }) => {
     return (
         <form
             className='flexRow'
@@ -18,6 +18,7 @@ const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown }) => {
                 type='date'
                 value={dueOn}
                 onChange={onChange} />
+            <button className='addBtn' type='button' onClick={onAddNewTask}>ADD</button>
         </form>
     );
 };

@@ -163,7 +163,8 @@ class App extends Component {
                         newTask={newTask}
                         dueOn={dueOn}
                         onChange={this.handleChange}
-                        onKeyDown={this.handleKeyDown} />
+                        onKeyDown={this.handleKeyDown} 
+                        onAddNewTask={this.handleAddNewTask} />
                     <UserDisplayPreference
                         viewOptions={viewOptions}
                         orderByOptions={orderByOptions}

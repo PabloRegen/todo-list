@@ -47,6 +47,20 @@ button[type='button'] {
   font-size: 0.8em;
   text-indent: 5px;
 }
+.addBtn {
+  box-sizing: border-box;
+  width: 60px;
+  height: 30px;
+  border: none;
+  color: white;
+  background: rgb(117,123,133);
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 0.8em;
+}
+.addBtn:hover {
+  color: black;
+}
 .select {
   width: 110px;
   height: 17px;
