@@ -12,6 +12,10 @@ const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown, onAddNewTask }) => {
             	placeholder='I need to...'
             	value={newTask}
             	onChange={onChange} />
+            <span
+                className='due'>
+                Due:
+            </span>
             <input
                 className='dueOn fontFamily'
                 name='dueOn'
