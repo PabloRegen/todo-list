@@ -2,7 +2,7 @@ import React from 'react';
 
 const ClearTasks = ({ onClearCompletedTasks, onClearAllTasks }) => {
     return (
-        <div className='flexRow clearBtns'>
+        <div className='flexRow'>
             <button
                 className='clearBtn pointer'
             	type='button'

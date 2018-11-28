@@ -8,10 +8,9 @@ Components structure:
         - ViewBar
         - OrderByBar
         - SearchBar
+    - ClearTasks
     - TotalTasksToDo
     - TaskList
-        - Task
-    - ClearTasks
 */
 
 import React, { Component } from 'react';
@@ -165,24 +164,26 @@ class App extends Component {
                         onChange={this.handleChange}
                         onKeyDown={this.handleKeyDown} 
                         onAddNewTask={this.handleAddNewTask} />
-                    <UserDisplayPreference
-                        viewOptions={viewOptions}
-                        orderByOptions={orderByOptions}
-                        viewValue={viewValue}
-                        orderByValue={orderByValue}
-                        searchValue={searchValue} 
-                        onChange={this.handleChange} />
+                    <div className='flexRow'>
+                        <UserDisplayPreference
+                            viewOptions={viewOptions}
+                            orderByOptions={orderByOptions}
+                            viewValue={viewValue}
+                            orderByValue={orderByValue}
+                            searchValue={searchValue}
+                            onChange={this.handleChange} />
+                        <ClearTasks
+                            onClearCompletedTasks={this.handleClearCompletedTasks}
+                            onClearAllTasks={this.handleClearAllTasks} />
+                        <TotalTasksToDo
+                            totalTasksToDo={amountTasksToDo(todoList)} />
+                    </div>
                 </div>
-                <TotalTasksToDo
-                    totalTasksToDo={amountTasksToDo(todoList)} />
                 <TasksList
                     userPreferenceToDoList={updateTasksList(todoList, viewValue, orderByValue, searchValue)}
                     onTaskAction={this.handleTaskAction}
                     onKeyDown={this.handleKeyDown}
                     onTaskDelete={this.handleTaskDelete} />
-                <ClearTasks
-                    onClearCompletedTasks={this.handleClearCompletedTasks}
-                    onClearAllTasks={this.handleClearAllTasks} />
             </div>
         );
     }

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const emojiList = [
-	{emoji: '🎉', label: 'Party Popper'},
 	{emoji: '😃', label: 'Grinning Face With Big Eyes'},
 	{emoji: '🤔', label: 'Thinking Face'},
 	{emoji: '😐', label: 'Neutral Face'},
