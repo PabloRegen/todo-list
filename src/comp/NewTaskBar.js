@@ -17,12 +17,12 @@ const NewTaskBar = ({ newTask, dueOn, onChange, onKeyDown, onAddNewTask }) => {
                 Due:
             </span>
             <input
-                className='dueOn fontFamily'
+                className='dueOn fontFamily pointer'
                 name='dueOn'
                 type='date'
                 value={dueOn}
                 onChange={onChange} />
-            <button className='addBtn' type='button' onClick={onAddNewTask}>ADD</button>
+            <button className='addBtn pointer' type='button' onClick={onAddNewTask}>ADD</button>
         </form>
     );
 };

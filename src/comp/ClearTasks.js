@@ -4,13 +4,13 @@ const ClearTasks = ({ onClearCompletedTasks, onClearAllTasks }) => {
     return (
         <div className='flexRow'>
             <button
-                className='clearBtn pointer'
+                className='clearCompletedBtn pointer'
             	type='button'
             	onClick={onClearCompletedTasks}>
             	Clear completed
             </button>
             <button
-                className='clearBtn pointer'
+                className='clearAllBtn pointer'
             	type='button'
             	onClick={onClearAllTasks}>
             	Clear all

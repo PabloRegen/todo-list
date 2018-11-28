@@ -1,6 +1,6 @@
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: rgb(19,117,109);
+  background: rgb(28, 40, 51);
   margin: 0;
   padding: 0;
 }
@@ -66,6 +66,7 @@ button[type='button'] {
 }
 .addBtn:hover {
   color: black;
+  color: rgb(28, 40, 51);
 }
 .select {
   width: 110px;
@@ -204,13 +205,17 @@ li {
 }
 
 /* Clear buttons */
-.clearBtn {
+.clearCompletedBtn,
+.clearAllBtn {
   color: white;
   background: transparent;
   font-size: 0.9em;
   padding: 0;
   margin: 0 25px;
 }
-.clearBtn:hover {
-  color: black;
+.clearCompletedBtn:hover {
+  color: rgb(117,123,133);
+}
+.clearAllBtn:hover {
+  color: red;
 }
