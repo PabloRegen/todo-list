@@ -17,6 +17,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         type='checkbox'
                         checked={done}
                         onChange={e => onTaskAction(e, id, 'taskDone')} />
+                    <span></span>
                     <button 
                         className={`collapsibleButton ${noteOpen ? 'showing' : 'hiding'}`}
                         type='button'
@@ -34,6 +35,7 @@ const Task = ({ task, onTaskAction, onKeyDown, onTaskDelete }) => {
                         type='checkbox'
                         checked={starred}
                         onChange={e => onTaskAction(e, id, 'taskStarred')} />
+                    <span></span>
                     <button
                         className='deleteButton pointer'
                         type='button'
